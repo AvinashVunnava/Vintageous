@@ -1806,8 +1806,8 @@ class _vi_big_p(ViTextCommandBase):
     def run(self, edit, register=None, count=1, mode=None):
         state = self.state
 
-        if state.mode == modes.VISUAL:
-            prev_text = state.registers.get_selected_text(self)
+        #if state.mode == modes.VISUAL:
+            #prev_text = state.registers.get_selected_text(self)
 
         if register:
             fragments = state.registers[register]
@@ -1816,9 +1816,9 @@ class _vi_big_p(ViTextCommandBase):
             # register's content.
             fragments = state.registers['"']
 
-        if state.mode == modes.VISUAL:
-            # Populate registers with the text we're about to paste.
-            state.registers['"'] = prev_text
+        #if state.mode == modes.VISUAL:
+            ## Populate registers with the text we're about to paste.
+            #state.registers['"'] = prev_text
 
         # TODO: Enable pasting to multiple selections.
         sel = list(self.view.sel())[0]
@@ -1885,9 +1885,9 @@ class _vi_p(ViTextCommandBase):
             print("Vintageous: Nothing in register \".")
             return
 
-        if state.mode == modes.VISUAL:
-            prev_text = state.registers.get_selected_text(self)
-            state.registers['"'] = prev_text
+        #if state.mode == modes.VISUAL:
+            #prev_text = state.registers.get_selected_text(self)
+            #state.registers['"'] = prev_text
 
         sels = list(self.view.sel())
         # If we have the same number of pastes and selections, map 1:1. Otherwise paste paste[0]
